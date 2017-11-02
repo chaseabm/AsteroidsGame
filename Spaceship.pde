@@ -9,6 +9,8 @@ class Spaceship extends Floater
     	myPointDirection = 0;
     	myColor = 255;
     	corners = 7;
+    	xCorners = new int[corners];
+    	yCorners = new int[corners];
     	xCorners[0] = -11;
     	yCorners[0] = 6;
     	xCorners[1] = -8;
