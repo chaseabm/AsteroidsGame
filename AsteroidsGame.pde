@@ -20,9 +20,18 @@ public void draw()
 }
 public void keyPressed()
 {
-  if (key == 'w' || key == 'W'){shuttlecock.accelerate(1);}
-  if (key == 'a' || key == 'A'){shuttlecock.turn(-20);}
-  if (key == 'd' || key == 'D'){shuttlecock.turn(20);}
+  private boolean accelerating = false;
+  private boolean turningCounterClockwise = false;
+  private boolean turningClockwise = false;
+  if (key == 'w' || key == 'W'){accelerating = true;}
+  else {accelerating = false;}
+  if (accelerating == true){shuttlecock.accelerate(1);}
+  if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
+  else {turningCounterClockwise = false;}
+  if (turningCounterClockwise == true){shuttlecock.turn(-2);}
+  if (key == 'd' || key == 'D'){turningClockwise = true;}
+  else {turningClockwise = false;}
+  if (turningClockwise == true){shuttlecock.turn(2);}
   if (key == 'q' || key == 'Q')
 	{
 	shuttlecock.setX((int)(Math.random()*500));
