@@ -20,18 +20,18 @@ public void draw()
 }
 public void keyPressed()
 {
-  private boolean accelerating = false;
-  private boolean turningCounterClockwise = false;
-  private boolean turningClockwise = false;
+  boolean accelerating = false;
+  boolean turningCounterClockwise = false;
+  boolean turningClockwise = false;
   if (key == 'w' || key == 'W'){accelerating = true;}
   else {accelerating = false;}
   if (accelerating == true){shuttlecock.accelerate(1);}
   if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
   else {turningCounterClockwise = false;}
-  if (turningCounterClockwise == true){shuttlecock.turn(-2);}
+  if (turningCounterClockwise == true){shuttlecock.turn(-10);}
   if (key == 'd' || key == 'D'){turningClockwise = true;}
   else {turningClockwise = false;}
-  if (turningClockwise == true){shuttlecock.turn(2);}
+  if (turningClockwise == true){shuttlecock.turn(10);}
   if (key == 'q' || key == 'Q')
 	{
 	shuttlecock.setX((int)(Math.random()*500));
