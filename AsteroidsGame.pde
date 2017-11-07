@@ -1,5 +1,8 @@
 Spaceship shuttlecock = new Spaceship();
 Stars [] allstar = new Stars[200];
+boolean accelerating = false;
+boolean turningCounterClockwise = false;
+boolean turningClockwise = false;
 public void setup() 
 {
   size(500, 500);
@@ -17,20 +20,17 @@ public void draw()
   }
   shuttlecock.show();
   shuttlecock.move();
+  if (key == 'w' || key == 'W'){accelerating = true;}
+  else {accelerating = false;}
+  if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
+  else {turningCounterClockwise = false;}
+  if (key == 'd' || key == 'D'){turningClockwise = true;}
+  else {turningClockwise = false;}
 }
 public void keyPressed()
 {
-  boolean accelerating = false;
-  boolean turningCounterClockwise = false;
-  boolean turningClockwise = false;
-  if (key == 'w' || key == 'W'){accelerating = true;}
-  else {accelerating = false;}
   if (accelerating == true){shuttlecock.accelerate(1);}
-  if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
-  else {turningCounterClockwise = false;}
   if (turningCounterClockwise == true){shuttlecock.turn(-10);}
-  if (key == 'd' || key == 'D'){turningClockwise = true;}
-  else {turningClockwise = false;}
   if (turningClockwise == true){shuttlecock.turn(10);}
   if (key == 'q' || key == 'Q')
 	{
