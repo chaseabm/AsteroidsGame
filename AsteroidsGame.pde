@@ -11,7 +11,7 @@ public void setup()
   {
   	allstar[i] = new Stars();
   }
-  for (int i = 0; i < allstroids.length; i++)
+  for (int i = 0; i < allsteroids.length; i++)
   {
     allsteroids[i] = new Asteroid();
   }
@@ -27,23 +27,21 @@ public void draw()
   {
     allsteroids[i].show();
     allsteroids[i].move();
-    allsteroids[i].turn();
   }
   shuttlecock.show();
   shuttlecock.move();
-
+  if (accelerating == true){shuttlecock.accelerate(1);}
+  if (turningCounterClockwise == true){shuttlecock.turn(-10);}
+  if (turningClockwise == true){shuttlecock.turn(10);}
+}
+public void keyPressed()
+{
   if (key == 'w' || key == 'W'){accelerating = true;}
   else {accelerating = false;}
   if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
   else {turningCounterClockwise = false;}
   if (key == 'd' || key == 'D'){turningClockwise = true;}
   else {turningClockwise = false;}
-}
-public void keyPressed()
-{
-  if (accelerating == true){shuttlecock.accelerate(1);}
-  if (turningCounterClockwise == true){shuttlecock.turn(-10);}
-  if (turningClockwise == true){shuttlecock.turn(10);}
   if (key == 'q' || key == 'Q')
 	{
 	shuttlecock.setX((int)(Math.random()*500));
