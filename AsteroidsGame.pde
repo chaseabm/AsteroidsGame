@@ -30,18 +30,15 @@ public void draw()
   }
   shuttlecock.show();
   shuttlecock.move();
-  if (accelerating == true){shuttlecock.accelerate(1);}
-  if (turningCounterClockwise == true){shuttlecock.turn(-10);}
-  if (turningClockwise == true){shuttlecock.turn(10);}
+  if (accelerating == true){shuttlecock.accelerate(.2);}
+  if (turningCounterClockwise == true){shuttlecock.turn(-5);}
+  if (turningClockwise == true){shuttlecock.turn(5);}
 }
 public void keyPressed()
 {
   if (key == 'w' || key == 'W'){accelerating = true;}
-  else {accelerating = false;}
   if (key == 'a' || key == 'A'){turningCounterClockwise = true;}
-  else {turningCounterClockwise = false;}
   if (key == 'd' || key == 'D'){turningClockwise = true;}
-  else {turningClockwise = false;}
   if (key == 'q' || key == 'Q')
 	{
 	shuttlecock.setX((int)(Math.random()*500));
@@ -50,4 +47,10 @@ public void keyPressed()
 	shuttlecock.setDirectionY(0);
 	shuttlecock.setPointDirection((int)(Math.random()*360));
 	}
+}
+public void keyReleased()
+{
+  if (key == 'w' || key == 'W'){accelerating = false;}
+  if (key == 'a' || key == 'A'){turningCounterClockwise = false;}
+  if (key == 'd' || key == 'D'){turningClockwise = false;}
 }

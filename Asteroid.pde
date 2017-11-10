@@ -3,24 +3,32 @@ class Asteroid extends Floater
 	private int rotationSpeed;
 	public Asteroid()
 	{
-		rotationSpeed = (int)(Math.random() * 7) - 3;
+		rotationSpeed = (int)(Math.random() * 11) - 5;
 		myCenterX = (int)(Math.random() * 500);
     	myCenterY = (int)(Math.random() * 500);
     	myDirectionX = (int)(Math.random() * 11) - 5;
     	myDirectionY = (int)(Math.random() * 11) - 5;
     	myPointDirection = 0;
     	myColor = 255;
-    	corners = 5;
+    	corners = 8;
     	xCorners = new int[corners];
     	yCorners = new int[corners];
-    	xCorners[0] = -10;
-    	yCorners[0] = 0;
-    	xCorners[1] = 0;
-    	yCorners[1] = 10;
-    	xCorners[2] = 10;
-    	yCorners[2] = 0;
-    	xCorners[3] = 0;
-    	yCorners[3] = -10;
+    	xCorners[0] = (int)(Math.random() * 11) + 10;
+    	yCorners[0] = (int)(Math.random() * 11) - 5;
+    	xCorners[1] = (int)(Math.random() * 11) + 6;
+    	yCorners[1] = (int)(Math.random() * 11) + 6;
+    	xCorners[2] = (int)(Math.random() * 11) - 5;
+    	yCorners[2] = (int)(Math.random() * 11) + 10;
+    	xCorners[3] = (int)(Math.random() * 11) -16;
+    	yCorners[3] = (int)(Math.random() * 11) + 6;
+        xCorners[4] = (int)(Math.random() * 11) -20;
+        yCorners[4] = (int)(Math.random() * 11) - 5;
+        xCorners[5] = (int)(Math.random() * 11) -16;
+        yCorners[5] = (int)(Math.random() * 11) -16;
+        xCorners[6] = (int)(Math.random() * 11) - 5;
+        yCorners[6] = (int)(Math.random() * 11) -20;
+        xCorners[7] = (int)(Math.random() * 11) + 6;
+        yCorners[7] = (int)(Math.random() * 11) -16;
 	}
 	public void move()
 	{
