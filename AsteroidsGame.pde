@@ -1,20 +1,22 @@
 Spaceship shuttlecock = new Spaceship();
 Stars [] allstar = new Stars[200];
-Asteroid [] allsteroids = new Asteroid[10];
+//Asteroid [] allsteroids = new Asteroid[7];
+ArrayList <Asteroid> allsteroids = new ArrayList <Asteroid>();
 boolean accelerating = false;
 boolean turningCounterClockwise = false;
 boolean turningClockwise = false;
 public void setup() 
 {
-  size(500, 500);
+  size(700, 500);
   for (int i = 0; i < allstar.length; i++)
   {
   	allstar[i] = new Stars();
   }
-  for (int i = 0; i < allsteroids.length; i++)
+/*  for (int i = 0; i < allsteroids.length; i++)
   {
     allsteroids[i] = new Asteroid();
   }
+*/
 }
 public void draw() 
 {
@@ -41,7 +43,7 @@ public void keyPressed()
   if (key == 'd' || key == 'D'){turningClockwise = true;}
   if (key == 'q' || key == 'Q')
 	{
-	shuttlecock.setX((int)(Math.random()*500));
+	shuttlecock.setX((int)(Math.random()*700));
 	shuttlecock.setY((int)(Math.random()*500));
 	shuttlecock.setDirectionX(0);
 	shuttlecock.setDirectionY(0);
