@@ -12,11 +12,10 @@ public void setup()
   {
   	allstar[i] = new Stars();
   }
-/*  for (int i = 0; i < allsteroids.length; i++)
+  for (int i = 0; i < 8; i++)
   {
-    allsteroids[i] = new Asteroid();
+    allsteroids.add(new Asteroid());
   }
-*/
 }
 public void draw() 
 {
@@ -25,10 +24,10 @@ public void draw()
   {
   	allstar[i].show();
   }
-  for (int i = 0; i < allsteroids.length; i++)
+  for (int i = 0; i < allsteroids.size(); i++)
   {
-    allsteroids[i].show();
-    allsteroids[i].move();
+    allsteroids(i).show();
+    allsteroids(i).move();
   }
   shuttlecock.show();
   shuttlecock.move();
