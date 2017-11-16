@@ -1,6 +1,5 @@
 Spaceship shuttlecock = new Spaceship();
 Stars [] allstar = new Stars[200];
-//Asteroid [] allsteroids = new Asteroid[7];
 ArrayList <Asteroid> allsteroids = new ArrayList <Asteroid>();
 boolean accelerating = false;
 boolean turningCounterClockwise = false;
@@ -26,8 +25,11 @@ public void draw()
   }
   for (int i = 0; i < allsteroids.size(); i++)
   {
-    allsteroids(i).show();
-    allsteroids(i).move();
+    allsteroids.get(i).show();
+    allsteroids.get(i).move();
+    //collisions
+    if (dist(allsteroids.get(i).getX(), allsteroids.get(i).getY(), shuttlecock.getX(), shuttlecock.getY()) < 20)
+      //REMOVE FROM ARRAYLIST
   }
   shuttlecock.show();
   shuttlecock.move();
