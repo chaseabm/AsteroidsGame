@@ -29,7 +29,9 @@ public void draw()
     allsteroids.get(i).move();
     //collisions
     if (dist(allsteroids.get(i).getX(), allsteroids.get(i).getY(), shuttlecock.getX(), shuttlecock.getY()) < 20)
-      //REMOVE FROM ARRAYLIST
+      {
+      allsteroids.remove(i);
+      }
   }
   shuttlecock.show();
   shuttlecock.move();
