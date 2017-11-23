@@ -1,6 +1,7 @@
 Spaceship shuttlecock = new Spaceship();
 Stars [] allstar = new Stars[200];
 ArrayList <Asteroid> allsteroids = new ArrayList <Asteroid>();
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 boolean accelerating = false;
 boolean turningCounterClockwise = false;
 boolean turningClockwise = false;
@@ -23,14 +24,27 @@ public void draw()
   {
   	allstar[i].show();
   }
+  for (int i = 0; i < bullets.size(); i++)
+  {
+    bullets.get(i).show();
+    bullets.get(i).move();
+  }
   for (int i = 0; i < allsteroids.size(); i++)
   {
     allsteroids.get(i).show();
     allsteroids.get(i).move();
-    //collisions
-    if (dist(allsteroids.get(i).getX(), allsteroids.get(i).getY(), shuttlecock.getX(), shuttlecock.getY()) < 20)
+    if (dist(allsteroids.get(i).getX(), allsteroids.get(i).getY(), shuttlecock.getX(), shuttlecock.getY()) < 25)
       {
       allsteroids.remove(i);
+      }
+  }
+//collisions
+  for(int j = 0; j < bullets.size(); j++)
+  {
+    for(int i = 0; i < allsteroids.size(); i ++)
+      if(dist(bullets.get(j).getX(), bullets.get(j).getY(), allsteroids.get(i).getX(), allsteroids.get(i).getY()) < 20)
+      {
+        allsteroids.remove(i);
       }
   }
   shuttlecock.show();
@@ -52,6 +66,7 @@ public void keyPressed()
 	shuttlecock.setDirectionY(0);
 	shuttlecock.setPointDirection((int)(Math.random()*360));
 	}
+  if (key == ' '){bullets.add(new Bullet(shuttlecock));}
 }
 public void keyReleased()
 {
