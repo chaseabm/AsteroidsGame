@@ -9,7 +9,7 @@ class Asteroid extends Floater
     	myDirectionX = (int)(Math.random() * 11) - 5;
     	myDirectionY = (int)(Math.random() * 11) - 5;
     	myPointDirection = 0;
-    	myColor = 200;
+    	myColor = 255;
     	corners = 8;
     	xCorners = new int[corners];
     	yCorners = new int[corners];
@@ -45,4 +45,6 @@ class Asteroid extends Floater
     public double getDirectionY(){return myDirectionY;}
     public void setPointDirection(int degrees){myPointDirection = degrees;}
     public double getPointDirection(){return myPointDirection;}
+    public void setColor(int theColor){myColor = theColor;}
+    public int getColor(){return myColor;}
 }
