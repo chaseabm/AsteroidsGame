@@ -12,6 +12,7 @@ int health = 100;
 int numberOfAsteroids = 5;
 boolean win = false;
 boolean lose = false;
+boolean starting = true;
 public void setup() 
 {
   size(700, 500);
@@ -29,6 +30,24 @@ public void setup()
 }
 public void draw() 
 {
+  if (starting == true)
+  {
+    fill(100);
+    rect(0, 0, width, height);
+    fill(50);
+    Stroke(255, 255, 255);
+    rect(width/2 - 30, height/2 + 10, 60, 50);
+    noStroke();
+    fill(255);
+    textSize(40);
+    text("Asteroids", width/2 - 100, height/2 -80);
+    textSize(20);
+    text("START", width/2 - 15, height/2 + 20);
+    if (mousePressed && mouseX >= 0 && mouseY > 0)
+      starting = false;
+  }
+  else
+  {
   background(0);
   for (int i = 0; i < allstar.length; i++)
   {
@@ -88,7 +107,7 @@ public void draw()
     win = true;
   else if (health == 55 && score == (numberOfAsteroids - 1) * 100)
     win = true;
-  else if (health == 10 && score == (numberOfAsteroids - 1) * 100)
+  else if (health == 10 && score == (numberOfAsteroids - 2) * 100)
     win = true;
   else
     win = false;
@@ -116,6 +135,7 @@ public void draw()
     textSize(20);
     text("Final Score: " + score, width/2 - 60, height/2 + 20);
   }
+}
 }
 public void keyPressed()
 {
