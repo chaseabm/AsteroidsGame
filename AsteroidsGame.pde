@@ -35,15 +35,25 @@ public void draw()
     fill(100);
     rect(0, 0, width, height);
     fill(50);
-    Stroke(255, 255, 255);
-    rect(width/2 - 30, height/2 + 10, 60, 50);
+    stroke(255);
+    rect(width/2 - 35, height/2 + 10, 70, 40);
     noStroke();
     fill(255);
     textSize(40);
     text("Asteroids", width/2 - 100, height/2 -80);
     textSize(20);
-    text("START", width/2 - 15, height/2 + 20);
-    if (mousePressed && mouseX >= 0 && mouseY > 0)
+    text("START", width/2 - 29, height/2 + 37);
+    if (mouseX >= width/2-35 && mouseY >= height/2+10 && mouseX <= width/2+35 && mouseY <= height/2+50)
+    { 
+      fill(255,20,20);
+      stroke(255);
+      rect(width/2 - 35, height/2 + 10, 70, 40);
+      noStroke();
+      fill(255);
+      textSize(20);
+      text("START", width/2 - 29, height/2 + 37);
+    }
+    if (mousePressed && mouseX >= width/2-35 && mouseY >= height/2+10 && mouseX <= width/2+35 && mouseY <= height/2+50)
       starting = false;
   }
   else
@@ -117,23 +127,23 @@ public void draw()
     lose = false;
   if (win == true)
   {
-    fill(50);
+    fill(255);
     rect(0, 0, width, height);
     fill(255);
     textSize(40);
-    text("YOU WIN", width/2 - 100, height/2 -80);
+    text("YOU WIN", width/2 - 80, height/2 -80);
     textSize(20);
-    text("Final Score: " + score, width/2 - 60, height/2 + 20);
+    text("Final Score: " + score, width/2 - 80, height/2 + 20);
   }
   if (lose == true)
   {
-    fill(50);
+    fill(255,20,20);
     rect(0, 0, width, height);
     fill(255);
     textSize(40);
-    text("YOU LOSE", width/2 - 100, height/2 -80);
+    text("YOU LOSE", width/2 - 95, height/2 -80);
     textSize(20);
-    text("Final Score: " + score, width/2 - 60, height/2 + 20);
+    text("Final Score: " + score, width/2 - 80, height/2 + 20);
   }
 }
 }
