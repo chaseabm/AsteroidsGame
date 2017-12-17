@@ -1,5 +1,5 @@
 Spaceship shuttlecock = new Spaceship();
-Rocket rocket = new Rocket();
+Rocket flame = new Rocket();
 Stars [] allstar = new Stars[200];
 ArrayList <Asteroid> allsteroids = new ArrayList <Asteroid>();
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
@@ -105,13 +105,13 @@ public void draw()
   }
   shuttlecock.show();
   shuttlecock.move();
-  rocket.move();
+  flame.move();
   textSize(20);
   text("Score: " + score, width - 155, 25);
   text("Health: " + health + "%", width - 155, 55);
-  if (accelerating == true){shuttlecock.accelerate(.2); rocket.accelerate(.2); rocket.show();}
-  if (turningCounterClockwise == true){shuttlecock.turn(-5); rocket.turn(-5);}
-  if (turningClockwise == true){shuttlecock.turn(5); rocket.turn(5);}
+  if (accelerating == true){shuttlecock.accelerate(.2); flame.accelerate(.2); flame.show();}
+  if (turningCounterClockwise == true){shuttlecock.turn(-5); flame.turn(-5);}
+  if (turningClockwise == true){shuttlecock.turn(5); flame.turn(5);}
 //  if (shooting == true){bullets.add(new Bullet(shuttlecock));}
   counter++;
   if (health < 0){health = 0;}
@@ -187,11 +187,11 @@ public void keyPressed()
 	  shuttlecock.setDirectionX(0);
 	  shuttlecock.setDirectionY(0);
 	  shuttlecock.setPointDirection(randPointDirection);
-    rocket.setX(randSetX);
-    rocket.setY(randSetY);
-    rocket.setDirectionX(0);
-    rocket.setDirectionY(0);
-    rocket.setPointDirection(randPointDirection);
+    flame.setX(randSetX);
+    flame.setY(randSetY);
+    flame.setDirectionX(0);
+    flame.setDirectionY(0);
+    flame.setPointDirection(randPointDirection);
 	}
 //  if (key == ' '){shooting = true;}
   if (key == ' ' && counter > 10)
