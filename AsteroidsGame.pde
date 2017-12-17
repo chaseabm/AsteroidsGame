@@ -1,4 +1,5 @@
 Spaceship shuttlecock = new Spaceship();
+Rocket rocket = new Rocket();
 Stars [] allstar = new Stars[200];
 ArrayList <Asteroid> allsteroids = new ArrayList <Asteroid>();
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
@@ -104,12 +105,13 @@ public void draw()
   }
   shuttlecock.show();
   shuttlecock.move();
+  rocket.move();
   textSize(20);
   text("Score: " + score, width - 155, 25);
   text("Health: " + health + "%", width - 155, 55);
-  if (accelerating == true){shuttlecock.accelerate(.2);}
-  if (turningCounterClockwise == true){shuttlecock.turn(-5);}
-  if (turningClockwise == true){shuttlecock.turn(5);}
+  if (accelerating == true){shuttlecock.accelerate(.2); rocket.accelerate(.2); rocket.show();}
+  if (turningCounterClockwise == true){shuttlecock.turn(-5); rocket.turn(-5);}
+  if (turningClockwise == true){shuttlecock.turn(5); rocket.turn(5);}
 //  if (shooting == true){bullets.add(new Bullet(shuttlecock));}
   counter++;
   if (health < 0){health = 0;}
@@ -129,21 +131,44 @@ public void draw()
   {
     fill(255);
     rect(0, 0, width, height);
-    fill(255);
+    fill(0);
     textSize(40);
     text("YOU WIN", width/2 - 80, height/2 -80);
     textSize(20);
-    text("Final Score: " + score, width/2 - 80, height/2 + 20);
+    text("Final Score: " + score, 50, 50);
   }
   if (lose == true)
   {
-    fill(255,20,20);
+    fill(255,100,100);
     rect(0, 0, width, height);
     fill(255);
     textSize(40);
     text("YOU LOSE", width/2 - 95, height/2 -80);
     textSize(20);
-    text("Final Score: " + score, width/2 - 80, height/2 + 20);
+    text("Final Score: " + score, 50, 50);
+    //button
+    fill(50);
+    stroke(255);
+    rect(width/2 - 50, height/2 + 10, 100, 40);
+    noStroke();
+    fill(255);
+    textSize(20);
+    text("RESTART", width/2 - 42, height/2 + 37);
+    if (mouseX >= width/2-50 && mouseY >= height/2+10 && mouseX <= width/2+50 && mouseY <= height/2+50)
+    { 
+      fill(255,20,20);
+      stroke(255);
+      rect(width/2 - 50, height/2 + 10, 100, 40);
+      noStroke();
+      fill(255);
+      textSize(20);
+      text("RESTART", width/2 - 42, height/2 + 37);
+    }
+    if (mousePressed && mouseX >= width/2-35 && mouseY >= height/2+10 && mouseX <= width/2+35 && mouseY <= height/2+50)
+    {  
+      lose = false;
+      restart();
+    }
   }
 }
 }
@@ -154,11 +179,19 @@ public void keyPressed()
   if (key == 'd' || key == 'D'){turningClockwise = true;}
   if (key == 'q' || key == 'Q')
 	{
-	shuttlecock.setX((int)(Math.random()*700));
-	shuttlecock.setY((int)(Math.random()*500));
-	shuttlecock.setDirectionX(0);
-	shuttlecock.setDirectionY(0);
-	shuttlecock.setPointDirection((int)(Math.random()*360));
+    int randPointDirection = (int)(Math.random()*360);
+    int randSetX = (int)(Math.random()*700);
+    int randSetY = (int)(Math.random()*500);
+	  shuttlecock.setX(randSetX);
+	  shuttlecock.setY(randSetY);
+	  shuttlecock.setDirectionX(0);
+	  shuttlecock.setDirectionY(0);
+	  shuttlecock.setPointDirection(randPointDirection);
+    rocket.setX(randSetX);
+    rocket.setY(randSetY);
+    rocket.setDirectionX(0);
+    rocket.setDirectionY(0);
+    rocket.setPointDirection(randPointDirection);
 	}
 //  if (key == ' '){shooting = true;}
   if (key == ' ' && counter > 10)
@@ -173,4 +206,25 @@ public void keyReleased()
   if (key == 'a' || key == 'A'){turningCounterClockwise = false;}
   if (key == 'd' || key == 'D'){turningClockwise = false;}
 //  if (key == ' '){shooting = false;}
+}
+public void restart()
+{
+  score = 0;
+  health = 100;
+  win = false;
+  lose = false;
+  starting = false;
+  shuttlecock.setDirectionX(0);
+  shuttlecock.setDirectionY(0);
+  shuttlecock.setPointDirection(0);
+  shuttlecock.setX(width/2);
+  shuttlecock.setY(height/2);
+  for (int i = allsteroids.size() - 1; i > 0; i--)
+  {
+    allsteroids.remove(i);
+  }
+  for (int i = 0; i < numberOfAsteroids; i++)
+  {
+    allsteroids.add(new Asteroid());
+  }
 }
