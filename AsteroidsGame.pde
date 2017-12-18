@@ -219,6 +219,11 @@ public void restart()
   shuttlecock.setPointDirection(0);
   shuttlecock.setX(width/2);
   shuttlecock.setY(height/2);
+  flame.setDirectionX(0);
+  flame.setDirectionY(0);
+  flame.setPointDirection(0);
+  flame.setX(width/2);
+  flame.setY(height/2);
   for (int i = allsteroids.size() - 1; i > 0; i--)
   {
     allsteroids.remove(i);
